@@ -727,19 +727,19 @@ function processInput() {
         addMessage(`Você escolheu: ${userInput}`, "user-message", "You");
         generateExcuse(userInput);
     } else if (userInput === "tematicas") {
-        addMessage("Escolha um tema: televisivas, namoro, amigos, trabalho ou familia", "bot-message", "BOT");
+        addMessage("Escolha um tema: televisivas, namoro, amigos, trabalho ou familia", "bot-message", "Bot lo lamento");
     } else if (["namoro", "televisivas", "amigos", "trabalho", "familia"].includes(userInput)) {
         addMessage(`Você escolheu: ${userInput}`, "user-message", "You");
         generateExcuse(userInput);
     } else {
-        addMessage("Categoria não encontrada! Tente: absurdas, aleatorias ou tematicas", "bot-message", "BOT");
+        addMessage("Categoria não encontrada! Tente: absurdas, aleatorias ou tematicas", "bot-message", "Bot ごめんなさい");
     }
     document.getElementById("userInput").value = "";
 }
 
 function generateExcuse(category) {
     let excuse = excuses[category][Math.floor(Math.random() * excuses[category].length)];
-    addMessage(excuse, "bot-message", "BOT");
+    addMessage(excuse, "bot-message", "Bot desculpe");
 }
 
 function addMessage(text, className, name) {
