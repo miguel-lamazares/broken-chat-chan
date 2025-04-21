@@ -13,9 +13,9 @@ function processInput() {
 
     // Subcategoria de televisivas
     if (state.esperandoSubcategoria === "televisivas") {
-        const map = { series: "séries", "séries": "séries", animes: "animes", filmes: "filmes" };
+        const map = { series: "séries", animes: "animes", filmes: "filmes" };
         if (map[input]) {
-            carregarJson(`json/tematicas/televisivas/${map[input]}.json`, input);
+            carregarJson(`./json/tematicas/televisivas/${map[input]}.json`, input);
         } else {
             addMessage("Escolha entre: animes, filmes ou séries", "bot-message", "Bot テレビ");
         }
@@ -26,7 +26,7 @@ function processInput() {
     // Subcategoria de temáticas
     if (state.esperandoTematica) {
         if (["namoro", "amigos", "trabalho", "familia"].includes(input)) {
-            carregarJson(`json/tematicas/${input}.json`, input);
+            carregarJson(`./json/tematicas/${input}.json`, input);
         } else if (input === "televisivas") {
             addMessage("Você quer desculpas de: animes, filmes ou séries?", "bot-message", "Bot 📺");
             state.esperandoSubcategoria = "televisivas";
@@ -40,7 +40,7 @@ function processInput() {
     // Categorias principais
     if (["absurdas", "aleatorias", "clássicas", "classicas"].includes(input)) {
         const nome = input === "clássicas" ? "classicas" : input;
-        carregarJson(`json/${nome}.json`, nome);
+        carregarJson(`./json/${nome}.json`, nome);
     } else if (input === "tematicas") {
         addMessage("Escolha uma temática: namoro, amigos, trabalho, família ou televisivas", "bot-message", "Bot テーマ");
         state.esperandoTematica = true;
@@ -83,4 +83,20 @@ function addMessage(text, className, sender) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-window.onload = startChat;
+// Garante que o chat comece após o DOM carregar
+document.addEventListener("DOMContentLoaded", () => {
+    startChat();
+    document.getElementById("sendBtn").addEventListener("click", processInput);
+});
+document.addEventListener("DOMContentLoaded", () => {
+    // Função de clique do botão "Enviar"
+    document.getElementById("sendBtn").addEventListener("click", processInput);
+
+    // Vinculando o Enter ao botão "Enviar"
+    document.getElementById("userInput").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();  // Previne o comportamento padrão do Enter (como enviar um formulário)
+            processInput();          
+        }
+    });
+});
