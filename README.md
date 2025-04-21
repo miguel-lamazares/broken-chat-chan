@@ -9,6 +9,7 @@ Chat-chan é um chatbot divertido que gera desculpas aleatórias para diversas s
 - HTML
 - CSS 
 - JavaScript
+- banco de dados simples em JSON
 
 ## 🛠 Como Usar
 
