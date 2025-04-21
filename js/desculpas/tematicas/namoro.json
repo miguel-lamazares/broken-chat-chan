@@ -1,5 +1,4 @@
-export const excuse = {
-    namoro: [
+[
         "Eu ia te chamar, mas meu celular reiniciou e esqueci.",
         "Estava tão nervoso que acabei dormindo sem querer.",
         "Meu horóscopo disse para evitar decisões hoje, então esperei.",
@@ -54,4 +53,3 @@ export const excuse = {
         "Me atrasei porque queria achar as palavras certas pra falar com você.",
         "Meu coração ficou offline por um momento de nervoso."
     ]
-};

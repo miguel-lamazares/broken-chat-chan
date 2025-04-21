@@ -1,5 +1,4 @@
-export const excuses = {
-absurdas: [
+[
     "Fui abduzido por alienígenas e só me devolveram agora.",
     "Tropecei numa viagem no tempo e só voltei agora.",
     "Um esquilo roubou minhas chaves e tive que negociar com ele.",
@@ -53,4 +52,4 @@ absurdas: [
     "A porta da minha casa virou um quebra-cabeça.",
     "Meu espelho decidiu me trollar e só percebi agora.",
     "Um peixe falante pediu minha ajuda para salvar o oceano."
-] };
+] 

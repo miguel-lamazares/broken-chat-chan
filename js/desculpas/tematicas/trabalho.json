@@ -1,5 +1,4 @@
-export const excuse = {
-    trabalho: [
+ [
         "Meu despertador não tocou e acordei achando que era domingo.",
         "Meu gato derrubou café no meu teclado e tive que limpar tudo.",
         "A reunião foi adiada para o horário que eu já estava saindo.",
@@ -54,4 +53,3 @@ export const excuse = {
         "Me distraí organizando a mesa e quando vi, já estava atrasado.",
         "O computador deu tela azul no meio de um relatório importante."
     ]
- };

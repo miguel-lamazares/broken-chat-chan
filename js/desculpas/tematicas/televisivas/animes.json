@@ -1,5 +1,4 @@
-export const excuses = {
-animes: [
+ [
     "Fui assistir um episódio de uma série e acabei maratonando a temporada inteira.",
     "Meu amigo me chamou pra ver um filme e não consegui sair.",
     "Estava assistindo um anime e perdi a noção do tempo.",
@@ -111,4 +110,4 @@ animes: [
     "Me convocaram para um jogo mortal onde só um sobrevive. (Darwin’s Game)",
     "Minha espada mágica se quebrou e precisei forjar outra. (Qualquer anime de fantasia)",
     "O Koro-sensei me deu um dever de casa impossível e passei o dia todo tentando resolver. (Assassination Classroom)"
-]};
+]

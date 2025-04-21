@@ -1,5 +1,4 @@
-export const excuses = {
- aleatorias: [
+ [
     "O Wi-Fi caiu e um pombo levou meu celular.",
     "Meu cachorro escondeu minha carteira e só achei agora.",
     "Fiquei preso no elevador com um entregador de pizza.",
@@ -53,4 +52,4 @@ export const excuses = {
     "Minha bicicleta decidiu que não queria mais funcionar.",
     "O trânsito estava tão parado que comecei a ler um livro.",
     "Um corvo tentou me convencer a me tornar seu aprendiz."
-] };
+] 

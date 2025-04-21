@@ -1,5 +1,4 @@
-export const excuses = {
-    series: [
+ [
         "Fui assistir um episódio de uma série e acabei maratonando a temporada inteira.",
         "Meu amigo me chamou pra ver um filme e não consegui sair.",
         "Estava assistindo um anime e perdi a noção do tempo.",
@@ -117,4 +116,3 @@ export const excuses = {
         "Entrei para um clube secreto de luta onde ninguém fala sobre isso. (Fight Club... mas na TV)",
         "O Batman me pediu ajuda, e quem sou eu para negar? (Gotham)"
     ]
-}

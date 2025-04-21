@@ -1,5 +1,4 @@
-export const excuse = {
-amigos: [
+[
     "Meu amigo me chamou para um 'rolê rápido' e só acabou agora.",
     "Meu amigo esqueceu a carteira e tive que pagar o almoço dele.",
     "Meu amigo terminou o namoro e precisei consolá-lo.",
@@ -50,4 +49,4 @@ amigos: [
     "Meu amigo me ligou pedindo carona de última hora.",
     "Meu amigo quis ensinar um truque de skate e acabou se machucando.",
     "Meu amigo achou que sabia estacionar e ficamos meia hora tentando sair do lugar."
-] };
+]

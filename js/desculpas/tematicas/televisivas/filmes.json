@@ -1,5 +1,4 @@
-export const excuses = {
-    filmes: [
+ [
 
         "Fui assistir um filme e acabei maratonando a trilogia inteira.",
         "Fiquei preso em um loop temporal e só consegui sair agora. (Feitiço do Tempo)",
@@ -107,4 +106,3 @@ export const excuses = {
         "Fui desafiado para uma batalha de dança intergaláctica. (Guardiões da Galáxia)",
         "Fiquei preso em um jogo de tabuleiro mágico. (Jumanji)"
     ]
-};

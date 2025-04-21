@@ -1,5 +1,4 @@
-export const excuse = {
-classicas: [
+[
         "Fiquei sem sinal.",
         "Meu celular descarregou.",
         "Eu não vi a mensagem.",
@@ -50,4 +49,4 @@ classicas: [
         "O elevador do prédio quebrou e tive que subir de escada.",
         "Peguei um número errado e só percebi depois.",
         "Fui mexer em alguma coisa e quebrei sem querer."
-] };
+] 
