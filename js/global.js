@@ -1,62 +1,71 @@
-// desculpas
-import { absurdas } from './desculpas/absurdas';
-import { aleatorias } from './desculpas/aleatorias';
-import { classicas } from './desculpas/classicas';
+// Importações dos bancos de dados (desculpas)
+import { absurdas } from './desculpas/absurdas.js';
+import { aleatorias } from './desculpas/aleatorias.js';
+import { classicas } from './desculpas/classicas.js';
 
-// temáticas
-import { amigos } from './desculpas/tematicas/amigos';
-import { namoro } from './desculpas/tematicas/namoro';
-import { trabalho } from './desculpas/tematicas/trabalho';
-import { familia } from './desculpas/tematicas/familia';
+import { amigos } from './desculpas/tematicas/amigos.js';
+import { namoro } from './desculpas/tematicas/namoro.js';
+import { trabalho } from './desculpas/tematicas/trabalho.js';
+import { familia } from './desculpas/tematicas/familia.js';
 
-// televisivas
-import { animes } from './desculpas/tematicas/televisivas/animes';
-import { filmes } from './desculpas/tematicas/televisivas/filmes';
-import { series } from './desculpas/tematicas/televisivas/series';
+import { animes } from './desculpas/tematicas/televisivas/animes.js';
+import { filmes } from './desculpas/tematicas/televisivas/filmes.js';
+import { series } from './desculpas/tematicas/televisivas/series.js';
 
+// Mapeamento de categorias
 const excuses = {
     absurdas,
     aleatorias,
     classicas,
-    namoro,
-    trabalho,
-    familia,
-    amigos,
-    animes,
-    filmes,
-    series
+    tematicas: {
+        namoro,
+        amigos,
+        trabalho,
+        familia,
+        televisivas: {
+            animes,
+            filmes,
+            séries: series,
+            series: series // suporte para "series" sem acento
+        }
+    }
 };
 
-let waitingForTelevisivasChoice = false;
+let state = {
+    esperandoSubcategoria: null
+};
 
+// Início do chat
 function startChat() {
-    addMessage("Digite a categoria: absurdas, clássicas, aleatórias ou temáticas", "bot-message", "Bot i'm sorry");
+    addMessage("Digite a categoria: absurdas, clássicas, aleatórias ou temáticas", "bot-message", "Bot 🤖");
 }
 
+// Processador de mensagens
 function processInput() {
-    let userInput = document.getElementById("userInput").value.toLowerCase().trim();
+    const input = document.getElementById("userInput").value.toLowerCase().trim();
 
-    if (waitingForTelevisivasChoice) {
-        if (["animes", "filmes", "séries", "series"].includes(userInput)) {
-            const categoriaFinal = (userInput === "series") ? "séries" : userInput;
-            addMessage(`Você escolheu: ${categoriaFinal}`, "user-message", "You");
-            generateExcuse(categoriaFinal);
+    if (state.esperandoSubcategoria === "televisivas") {
+        if (["animes", "filmes", "séries", "series"].includes(input)) {
+            const categoria = input === "series" ? "séries" : input;
+            gerarEDisparar(excuses.tematicas.televisivas[categoria], categoria);
         } else {
-            addMessage("Opção inválida! Escolha entre: animes, filmes ou séries", "bot-message", "Bot テレビ");
+            addMessage("Escolha entre: animes, filmes ou séries", "bot-message", "Bot テレビ");
         }
-        waitingForTelevisivasChoice = false;
-    } else if (excuses[userInput]) {
-        addMessage(`Você escolheu: ${userInput}`, "user-message", "You");
-        generateExcuse(userInput);
-    } else if (userInput === "tematicas") {
-        addMessage("Escolha um tema: televisivas, namoro, amigos, trabalho ou família", "bot-message", "Bot lo lamento");
-    } else if (userInput === "televisivas") {
-        addMessage("Você escolheu: televisivas", "user-message", "You");
-        addMessage("Você quer desculpas de: animes, filmes ou séries?", "bot-message", "Bot テレビ");
-        waitingForTelevisivasChoice = true;
-    } else if (["namoro", "amigos", "trabalho", "familia"].includes(userInput)) {
-        addMessage(`Você escolheu: ${userInput}`, "user-message", "You");
-        generateExcuse(userInput);
+        state.esperandoSubcategoria = null;
+        document.getElementById("userInput").value = "";
+        return;
+    }
+
+    if (["absurdas", "aleatorias", "clássicas", "classicas"].includes(input)) {
+        const categoria = input === "clássicas" ? "classicas" : input;
+        gerarEDisparar(excuses[categoria], categoria);
+    } else if (input === "tematicas") {
+        addMessage("Escolha uma temática: namoro, amigos, trabalho, família ou televisivas", "bot-message", "Bot テーマ");
+    } else if (["namoro", "amigos", "trabalho", "familia"].includes(input)) {
+        gerarEDisparar(excuses.tematicas[input], input);
+    } else if (input === "televisivas") {
+        addMessage("Você quer desculpas de: animes, filmes ou séries?", "bot-message", "Bot 📺");
+        state.esperandoSubcategoria = "televisivas";
     } else {
         addMessage("Categoria não encontrada! Tente: absurdas, aleatórias, clássicas ou temáticas", "bot-message", "Bot ごめんなさい");
     }
@@ -64,19 +73,22 @@ function processInput() {
     document.getElementById("userInput").value = "";
 }
 
-function generateExcuse(category) {
-    const excuse = excuses[category][Math.floor(Math.random() * excuses[category].length)];
-    addMessage(excuse, "bot-message", "Bot desculpe");
+// Gera desculpa e mostra no chat
+function gerarEDisparar(lista, nomeCategoria) {
+    addMessage(`Você escolheu: ${nomeCategoria}`, "user-message", "You");
+    const frase = lista[Math.floor(Math.random() * lista.length)];
+    addMessage(frase, "bot-message", "Bot desculpe");
 }
 
-function addMessage(text, className, name) {
+// Mostra mensagens no chat
+function addMessage(text, className, sender) {
     const chatBox = document.getElementById("chatBox");
     const message = document.createElement("div");
     message.classList.add("message", className);
 
     const nameTag = document.createElement("div");
     nameTag.classList.add("name");
-    nameTag.innerText = name;
+    nameTag.innerText = sender;
 
     const textNode = document.createElement("div");
     textNode.innerText = text;
