@@ -1,4 +1,4 @@
-# (broken) Chat-chan - Gerador de Desculpas 🌸
+# Chat-chan - Gerador de Desculpas 🌸
 
 ## 📌 Descrição
 
